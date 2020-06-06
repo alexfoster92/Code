@@ -87,10 +87,6 @@ const warriorsGames = [{
 const makeChart = (games, targetTeam) => {
   const ulParent = document.createElement("ul");
   for (let game of games) {
-    const {
-      homeTeam,
-      awayTeam
-    } = game;
     const gameLi = document.createElement("li");
     gameLi.innerHTML = getScoreLine(game);
     gameLi.classList.add(isWinner(game, targetTeam) ? "win" : "loss");
