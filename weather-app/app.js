@@ -4,8 +4,6 @@ const api = {
     baseurl: "https://api.openweathermap.org/data/2.5/"
 }
 
-const notificationElement = document.querySelector(".notification");
-
 // EVENT LISTENER TO GET AND SET WEATHER DEPENDING ON COORDINATES
 window.addEventListener("load", () => {
     let long;
@@ -25,9 +23,23 @@ window.addEventListener("load", () => {
 });
 
 // ERROR MESSAGE FOR DENIED GEOLOCATION
+const notificationElement = document.querySelector(".notification");
+const weatherEl = document.querySelector(".current .weather");
+
 function showError() {
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p>User denied geolocation.</p>`;
+    if (weatherEl.innerText === "-") {
+        notificationElement.style.display = "block";
+        notificationElement.innerHTML = `<p>User denied geolocation</p>`;
+        console.log("Checking if info displayed...");
+    } else {
+        notificationElement.style.display = "none";
+    }
+}
+
+// INTERVAL CHECK TO REMOVE ERROR MESSAGE IF USER HAS SEARCHED FOR A CITY
+setInterval(showError, 1000);
+if (notificationElement.style.display === "none") {
+    clearInterval();
 }
 
 // SEARCH INPUT SELECTION AND KEYPRESS EVENT LISTENER
