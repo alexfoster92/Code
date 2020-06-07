@@ -51,6 +51,7 @@ function setQuery(e) {
     if (e.key === "Enter") {
         getResults(searchInput.value);
         searchInput.value = "";
+        searchInput.blur();
     }
 }
 
