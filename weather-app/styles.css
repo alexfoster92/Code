@@ -150,6 +150,7 @@ main {
 
 .weather-icon img {
     width: 200px;
+    height: 200px;
     /* border: 1px solid green; */
     background-color: var(--sec-bg-color);
     border-radius: 50%;
